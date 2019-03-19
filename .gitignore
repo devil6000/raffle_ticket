@@ -1,6 +1,9 @@
 # thinkphp
 
 /vendor/composer
+/vendor/autoload.php
+/.idea
+/runtime
 
-composer.json
-composer.lock
+/composer.json
+/composer.lock
