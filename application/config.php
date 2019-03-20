@@ -15,15 +15,15 @@ return [
     // +----------------------------------------------------------------------
 
     // 应用调试模式
-    'app_debug'              => false,
+    'app_debug'              => true,
     // 应用Trace
-    'app_trace'              => false,
+    'app_trace'              => true,
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
     'app_multi_module'       => true,
     // 入口自动绑定模块
-    'auto_bind_module'       => false,
+    'auto_bind_module'       => true,
     // 注册的根命名空间
     'root_namespace'         => [],
     // 扩展函数文件
@@ -45,9 +45,9 @@ return [
     // 默认语言
     'default_lang'           => 'zh-cn',
     // 应用类库后缀
-    'class_suffix'           => false,
+    'class_suffix'           => true,
     // 控制器类后缀
-    'controller_suffix'      => false,
+    'controller_suffix'      => true,
 
     // +----------------------------------------------------------------------
     // | 模块设置
@@ -66,7 +66,7 @@ return [
     // 默认的空控制器名
     'empty_controller'       => 'Error',
     // 操作方法后缀
-    'action_suffix'          => '',
+    'action_suffix'          => 'Do',
     // 自动搜索控制器
     'controller_auto_search' => false,
 
@@ -181,6 +181,14 @@ return [
     'trace'                  => [
         // 内置Html Console 支持扩展
         'type' => 'Html',
+        'trace_tabs' => [
+            'base' => '基本',
+            'file' => '文件',
+            'info' => '流程',
+            'error|notice' => '错误',
+            'sql' => 'SQL',
+            'debug|log' => '调试'
+        ]
     ],
 
     // +----------------------------------------------------------------------
