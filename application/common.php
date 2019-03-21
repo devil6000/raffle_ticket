@@ -33,6 +33,8 @@ function grash_raffle_ticket(){
                         break;
                     }
 
+                    var_dump($ball);die();
+
                     $redBall = array($ball[0],$ball[1],$ball[2],$ball[3],$ball[4],$ball[5]);
                     $blueBall = $ball[6];
 
