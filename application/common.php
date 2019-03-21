@@ -16,7 +16,6 @@ function grash_raffle_ticket(){
     $particular = $config['particular_year']; //年
     $url = $config['url'];
     $suffix = $config['suffix'];
-    var_dump($suffix);die();
 
     $double = new \app\model\DoubleModel();
 
