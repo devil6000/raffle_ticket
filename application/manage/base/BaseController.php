@@ -26,7 +26,7 @@ abstract class BaseController extends Controller {
 
             $this->uid = session('uid','','login');
         }
-        
+
         $this->init();
     }
 
