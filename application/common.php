@@ -16,6 +16,7 @@ function grash_raffle_ticket(){
     $particular = $config['particular_year']; //年
     $url = $config['url'];
     $suffix = $config['suffix'];
+    var_dump($suffix);die();
 
     $double = new \app\model\DoubleModel();
 
@@ -51,7 +52,7 @@ function grash_raffle_ticket(){
             }
         }
 
-        save_config(APP_APTH . 'lottery.php', array('issue' => $issue, 'particular_year' => $curYear));
+        save_config(APP_PATH . 'lottery.php', array('issue' => $issue, 'particular_year' => $curYear));
     }else{
         $curYear = date('y', time());
         while (true){
@@ -86,7 +87,7 @@ function grash_raffle_ticket(){
             }
             ++$issue;
         }
-        save_config(APP_APTH . 'lottery.php', array('issue' => $issue, 'particular_year' => $particular));
+        save_config(APP_PATH . 'lottery.php', array('issue' => $issue, 'particular_year' => $particular));
     }
 }
 
