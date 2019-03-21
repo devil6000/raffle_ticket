@@ -10,3 +10,151 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+function grash_raffle_ticket(){
+    $config = \think\Config::get('double_ball');
+    $issue  = $config['issue']; //期号
+    $particular = $config['particular_year']; //年
+    $url = $config['url'];
+    $suffix = $config['suffix'];
+
+    $double = new \app\model\DoubleModel();
+
+    $curYear = date('y', time());
+    if(empty($issue) || empty($particular)){
+        //没有期号或年份，从第一期开始获取
+        for($particular = 2000; $particular <= $curYear; $particular++){
+            $issue = 1; //默认从本年第一期开始
+            while (true){
+                $tmpIssue = create_raffle_format_issue($particular, $issue);
+                $val = $double->where('issue', $tmpIssue)->value('id');
+                if(empty($val)){
+                    $ball = grash_double_curl($url . $tmpIssue . $suffix);
+                    if($ball === false){
+                        break;
+                    }
+
+                    $redBall = array($ball[0],$ball[1],$ball[2],$ball[3],$ball[4],$ball[5]);
+                    $blueBall = $ball[6];
+
+                    $insertData = [
+                        'issue'     => $tmpIssue,
+                        'year'      => $particular,
+                        'issue_no'  => $issue,
+                        'red_ball'  => serialize($redBall),
+                        'blue_ball' => $blueBall,
+                        'whole'     => implode(' ', $ball)
+                    ];
+
+                    $double->save($insertData);
+                }
+                ++$issue;
+            }
+        }
+
+        save_config(APP_APTH . 'lottery.php', array('issue' => $issue, 'particular_year' => $curYear));
+    }else{
+        $curYear = date('y', time());
+        while (true){
+            $tmpIssue = create_raffle_format_issue($particular, $issue);
+            $val = $double->where('issue', $tmpIssue)->value('id');
+            if(empty($val)){
+                $ball = grash_double_curl($url . $tmpIssue . $suffix);
+                if($ball === false){
+                    //不同年份，初始化期号和年份，继续获取,直到无法得到数据为止
+                    if($particular != $curYear){
+                        $particular += 1;
+                        $issue = 1;
+                        continue;
+                    }else{
+                        break;
+                    }
+                }
+
+                $redBall = array($ball[0],$ball[1],$ball[2],$ball[3],$ball[4],$ball[5]);
+                $blueBall = $ball[6];
+
+                $insertData = [
+                    'issue'     => $tmpIssue,
+                    'year'      => $particular,
+                    'issue_no'  => $issue,
+                    'red_ball'  => serialize($redBall),
+                    'blue_ball' => $blueBall,
+                    'whole'     => implode(' ', $ball)
+                ];
+
+                $double->save($insertData);
+            }
+            ++$issue;
+        }
+        save_config(APP_APTH . 'lottery.php', array('issue' => $issue, 'particular_year' => $particular));
+    }
+}
+
+/**
+ * 获取彩票期号
+ * @param $year
+ * @param int $issue
+ * @return string
+ */
+function create_raffle_format_issue($year, $issue = 0){
+    if(empty($issue)){  $issue = 1;}
+    return substr('0' . $year,-2) . substr('000' . $issue, -3);
+}
+
+/**
+ * 获取双色球号码
+ * @param $url
+ * @return array|bool
+ */
+function grash_double_curl($url){
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate'));
+    curl_setopt($ch, CURLOPT_ENCODING,'gzip,deflate');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,10);
+    $html = curl_exec($ch);
+    curl_close($ch);
+
+    if(!empty($html)){
+        $ball = array();
+        preg_match_all('/<li[^>]*class="ball_red".*?>.*?<\/li>/ism', $html, $red);
+        preg_match('/<li[^>]*class="ball_blue".*?>.*?<\/li>/ism', $html, $blue);
+
+        $tmp = array_merge($red, $blue);
+        foreach ($tmp as $item){
+            $item = preg_replace('/<(\/?li.*?)>/si',"",$item);
+            if(!is_array($item)){
+                $item = array($item);
+            }
+            $ball = array_merge($ball, $item);
+        }
+
+        unset($html);
+        return $ball;
+    }
+    return false;
+}
+
+/**
+ * 保存设置到配置文件中
+ * @param $path
+ * @param $params
+ * @return bool
+ */
+function save_config($path,$params){
+    if(empty($path)){   return false; }
+    if(in_array($params)){
+        $keys = $values = array();
+        foreach ($params as $key => $value){
+            $keys[] = '/\'' . $key . '\'(.*?),/';
+            $values[] = "'" . $key . "' => '" . $value . "',";
+        }
+
+        $stream = file_get_contents($path);
+        $stream = str_replace($keys,$values,$stream);
+        file_put_contents($stream);
+        return true;
+    }
+    return false;
+}

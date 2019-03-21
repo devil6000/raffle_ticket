@@ -18,3 +18,26 @@ create table `raffle_user`(
   primary key(`id`),
   foreign key(`jurisdiction`) references raffle_jurisdiction(`id`)
 )engine=innodb default charset=utf8;
+
+/* 公式表 */
+create table `raffle_formula`(
+  `id` int(10) not null auto_increment,
+  primary key(`id`)
+)engine=innodb default charset=utf8;
+
+
+/****************************************************************
+前台表
+****************************************************************/
+/* 双色球开奖号码表 */
+create table `raffle_double`(
+  `id` int(10) not null auto_increment,
+  `issue` int(10) not null comment '期号',
+  `year` int(4) not null comment '年份',
+  `issue_no` int(4) not null comment '编号',
+  `red_ball` varchar(255) not null comment '红色球',
+  `blue_ball` varchar(10) not null comment '蓝色球',
+  `whole` varchar(255) not null comment '完整的号码',
+  primary key(`id`),
+  unique key `issue` (`issue`)
+)engine=innodb default charset=utf8
