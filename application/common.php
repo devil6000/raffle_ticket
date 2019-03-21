@@ -22,7 +22,7 @@ function grash_raffle_ticket(){
     $curYear = date('y', time());
     if(empty($issue) || empty($particular)){
         //没有期号或年份，从第一期开始获取
-        for($particular = 2000; $particular <= $curYear; $particular++){
+        for($particular = 0; $particular <= $curYear; $particular++){
             $issue = 1; //默认从本年第一期开始
             while (true){
                 $tmpIssue = create_raffle_format_issue($particular, $issue);
