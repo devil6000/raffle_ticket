@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: appleimac
  * Date: 19/3/20
- * Time: ÏÂÎç2:16
+ * Time: 2:16
  */
 
 namespace app\manage\controller;
@@ -28,7 +28,7 @@ class LoginController extends BaseController {
             $user = $model->where(array('username' => $username))->find();
 
             if(empty($user)){
-                $this->error('ÓÃ»§Ãû²»´æÔÚ!');
+                $this->error('ç”¨æˆ·åä¸å­˜åœ¨!');
                 exit;
             }
 
@@ -37,11 +37,10 @@ class LoginController extends BaseController {
             $user = $model->where(array('username' => $username, 'password' => $password))->find();
 
             if(empty($user)){
-                $this->error('ÓÃ»§Ãû»òÃÜÂë´íÎó!');
+                $this->error('ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯!');
                 exit;
             }
 
-            //±£´æµ½session
             Session::init(['prefix' => 'login','type' => '', 'auto_start' => true, 'expire' => time() + 3600]);
             Session::set('uid',$user['id']);
             Session::set('user',$user);
@@ -49,7 +48,7 @@ class LoginController extends BaseController {
             $ret_url = input('ret_url','');
             $ret_url = empty($ret_url) ? url('index') : urldecode($ret_url);
 
-            $this->success('µÇÂ¼³É¹¦!', $ret_url,3);
+            $this->success('ç™»å½•æˆåŠŸ!', $ret_url,3);
         }
         $this->view->engine->layout(false);
         return $this->fetch();
@@ -61,7 +60,7 @@ class LoginController extends BaseController {
 
     public function outLoginDo(){
         Session::clear('login');
-        $this->success('ÍË³ö³É¹¦!', url('login'), 3);
+        $this->success('é€€å‡ºæˆåŠŸ!', url('login'), 3);
     }
 
     public function forgetDo(){

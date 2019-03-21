@@ -1,10 +1,10 @@
 <?php
 /**
- * ÅäÖÃÎÄ¼þ
+ * é…ç½®æ–‡ä»¶
  * Created by PhpStorm.
  * User: appleimac
  * Date: 19/3/20
- * Time: ÏÂÎç3:11
+ * Time: ä¸‹åˆ3:11
  */
 return [
   'template'    => [

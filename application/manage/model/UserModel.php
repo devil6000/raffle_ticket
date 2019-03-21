@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: appleimac
  * Date: 19/3/20
- * Time: обнГ3:29
+ * Time: 3:29
  */
 
 namespace app\manage\model;

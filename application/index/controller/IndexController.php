@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: appleimac
  * Date: 19/3/21
- * Time: 上午10:09
+ * Time: 10:09
  */
 
 namespace app\index\controller;
@@ -26,14 +26,12 @@ class IndexController extends LoginBaseController {
     }
 
     public function indexDo(){
-        //获取最新期号的号码
-        $issue = $this->config['issue'] - 1;    //上一期
+        $issue = $this->config['issue'] - 1;
         $year = $this->config['particular_year'];
         $issue = create_raffle_format_issue($year, $issue);
         $item = $this->model->where('issue', $issue)->find();
         $item['red_ball'] = unserialize($item['red_ball']);
 
-        //获取所有年份本期和上一期的号码
         $list = $this->model->where('issue_no','in',[$this->config['issue'] - 1, $this->config['issue']])->order('id asc')->select();
         if($list){
             foreach ($list as $key => $value){
