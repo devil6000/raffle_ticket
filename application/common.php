@@ -145,7 +145,7 @@ function grash_double_curl($url){
  */
 function save_config($path,$params){
     if(empty($path)){   return false; }
-    if(in_array($params)){
+    if(is_array($params)){
         $keys = $values = array();
         foreach ($params as $key => $value){
             $keys[] = '/\'' . $key . '\'(.*?),/';
