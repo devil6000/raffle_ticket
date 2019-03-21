@@ -11,6 +11,7 @@
 
 // 应用公共文件
 function grash_raffle_ticket(){
+    set_time_limit(0);
     $config = \think\Config::get('double_ball');
     $issue  = $config['issue']; //期号
     $particular = $config['particular_year']; //年
@@ -45,7 +46,7 @@ function grash_raffle_ticket(){
                         'whole'     => implode(' ', $ball)
                     ];
 
-                    $double->save($insertData);
+                    $double->isUpdate(false)->save($insertData);
                 }
                 ++$issue;
             }
@@ -82,7 +83,7 @@ function grash_raffle_ticket(){
                     'whole'     => implode(' ', $ball)
                 ];
 
-                $double->save($insertData);
+                $double->isUpdate(false)->save($insertData);
             }
             ++$issue;
         }
