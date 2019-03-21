@@ -155,7 +155,6 @@ function save_config($path,$params){
 
         $stream = file_get_contents($path);
         $stream = preg_replace($keys,$values,$stream);
-        var_dump($stream);die();
         file_put_contents($path, $stream);
         return true;
     }
