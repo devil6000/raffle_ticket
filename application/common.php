@@ -87,6 +87,7 @@ function grash_raffle_ticket(){
             }
             ++$issue;
         }
+        var_dump(APP_PATH);die();
         save_config(APP_PATH . 'lottery.php', array('issue' => $issue, 'particular_year' => $particular));
     }
 }
