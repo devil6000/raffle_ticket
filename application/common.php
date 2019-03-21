@@ -11,6 +11,7 @@
 
 // 应用公共文件
 function grash_raffle_ticket(){
+    \think\Config::load('lottery.php');
     $config = \think\Config::get('double_ball');
     $issue  = $config['issue']; //期号
     $particular = $config['particular_year']; //年
