@@ -18,9 +18,6 @@ function grash_raffle_ticket(){
     $url = $config['url'];
     $suffix = $config['suffix'];
 
-    $double = new \app\model\DoubleModel();
-    $firstSave = true;  //首次保存
-
     $curYear = date('y', time());
     if(empty($issue) || empty($particular)){
         //没有期号或年份，从第一期开始获取
@@ -47,12 +44,7 @@ function grash_raffle_ticket(){
                         'whole'     => implode(' ', $ball)
                     ];
 
-                    if($firstSave){
-                        $double->save($insertData);
-                        $firstSave = false;
-                    }else{
-                        $double->isUpdate(false)->save($insertData);
-                    }
+                    \app\model\DoubleModel::create($insertData);
 
                 }
                 ++$issue;
@@ -90,12 +82,7 @@ function grash_raffle_ticket(){
                     'whole'     => implode(' ', $ball)
                 ];
 
-                if($firstSave){
-                    $double->save($insertData);
-                    $firstSave = false;
-                }else{
-                    $double->isUpdate(false)->save($insertData);
-                }
+                \app\model\DoubleModel::create($insertData);
 
             }
             ++$issue;

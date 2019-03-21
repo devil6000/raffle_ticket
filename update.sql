@@ -32,7 +32,7 @@ create table `raffle_formula`(
 /* 双色球开奖号码表 */
 create table `raffle_double`(
   `id` int(10) not null auto_increment,
-  `issue` int(10) not null comment '期号',
+  `issue` varchar(10) not null comment '期号',
   `year` int(4) not null comment '年份',
   `issue_no` int(4) not null comment '编号',
   `red_ball` varchar(255) not null comment '红色球',
