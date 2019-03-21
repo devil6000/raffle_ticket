@@ -11,8 +11,8 @@ return [
     'double_ball'       => [
         'url'               => 'http://kaijiang.500.com/shtml/ssq/',
         'suffix'            => '.shtml',
-        'issue'             => '28',
-        'particular_year'   => '19',
+        'issue' => '29',
+        'particular_year' => '19',
         'previous_issue'    => '0'
     ],
 ];
