@@ -6,7 +6,7 @@
  * Time: ионГ10:09
  */
 
-namespace app\idnex\controller;
+namespace app\index\controller;
 
 
 use app\index\base\LoginBaseController;
