@@ -25,7 +25,7 @@ function grash_raffle_ticket(){
             $issue = 1; //默认从本年第一期开始
             while (true){
                 $tmpIssue = create_raffle_format_issue($particular, $issue);
-                $val = $double->where('issue', $tmpIssue)->value('id');
+                $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
                 if(empty($val)){
                     $ball = grash_double_curl($url . $tmpIssue . $suffix);
                     if(empty($ball)){
@@ -56,7 +56,7 @@ function grash_raffle_ticket(){
         $curYear = date('y', time());
         while (true){
             $tmpIssue = create_raffle_format_issue($particular, $issue);
-            $val = $double->where('issue', $tmpIssue)->value('id');
+            $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
             if(empty($val)){
                 $ball = grash_double_curl($url . $tmpIssue . $suffix);
                 if($ball === false){
