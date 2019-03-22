@@ -58,9 +58,7 @@ function grash_raffle_ticket(){
             $tmpIssue = create_raffle_format_issue($particular, $issue);
             $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
             if(empty($val)){
-                var_dump($url.$tmpIssue.$suffix);die();
                 $ball = grash_double_curl($url . $tmpIssue . $suffix);
-                var_dump($ball);die();
                 if(empty($ball)){
                     //不同年份，初始化期号和年份，继续获取,直到无法得到数据为止
                     if($particular != $curYear){
@@ -115,11 +113,14 @@ function grash_double_curl($url){
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate'));
     curl_setopt($ch, CURLOPT_ENCODING,'gzip,deflate');
+    curl_setopt($ch, CURLOPT_FAILONERROR,true);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,10);
+    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,5);  //尝试链接时间
+    curl_setopt($ch,CURLOPT_TIMEOUT,6); //链接超时时间
+
     $html = curl_exec($ch);
     curl_close($ch);
-
+    var_dump($html);die();
     if(!empty($html)){
         $ball = array();
         preg_match_all('/<li[^>]*class="ball_red".*?>.*?<\/li>/ism', $html, $red);
