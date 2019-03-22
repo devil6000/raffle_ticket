@@ -18,10 +18,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                {loop $before_lottery $row}
+                {volist name="before_lottery" id="row"}
                 <tr>
-                    <td>{$row['issue']}</td>
-                    <td>{$row['whole']}</td>
+                    <td>{$row.issue}</td>
+                    <td>{$row.whole}</td>
                 </tr>
                 {/loop}
                 </tbody>
