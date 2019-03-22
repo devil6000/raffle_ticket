@@ -18,9 +18,6 @@ function grash_raffle_ticket(){
     $url = $config['url'];
     $suffix = $config['suffix'];
 
-    var_dump($issue);
-    var_dump($particular);die();
-
     $curYear = date('y', time());
     if(empty($issue) || empty($particular)){
         //没有期号或年份，从第一期开始获取
@@ -60,6 +57,7 @@ function grash_raffle_ticket(){
         while (true){
             $tmpIssue = create_raffle_format_issue($particular, $issue);
             $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
+            var_dump($val);
             var_dump(empty($val));die();
             if(empty($val)){
                 var_dump('111');die();
