@@ -1,10 +1,10 @@
 <?php
 /**
- * 后台入口
+ * 鍚庡彴鍏ュ彛
  * Created by PhpStorm.
  * User: appleimac
  * Date: 19/3/19
- * Time: 下午5:18
+ * Time: 5:18
  */
 
 define('APP_PATH', __DIR__ . '/../application/');

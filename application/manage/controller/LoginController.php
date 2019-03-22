@@ -20,7 +20,6 @@ class LoginController extends BaseController {
     }
 
     public function indexDo(){
-        var_dump('1111');die();
         if(request()->isPost()){
             $username = input('post.username');
             $password = input('post.password');
