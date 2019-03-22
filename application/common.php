@@ -120,7 +120,7 @@ function grash_double_curl($url){
 
     $html = curl_exec($ch);
     curl_close($ch);
-    var_dump($html);die();
+
     if(!empty($html)){
         $ball = array();
         preg_match_all('/<li[^>]*class="ball_red".*?>.*?<\/li>/ism', $html, $red);
