@@ -110,6 +110,8 @@ function create_raffle_format_issue($year, $issue = 0){
  * @return array|bool
  */
 function grash_double_curl($url){
+    var_dump($url);die();
+
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     //curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate'));
