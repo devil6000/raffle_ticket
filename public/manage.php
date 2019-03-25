@@ -9,6 +9,6 @@
 
 define('APP_PATH', __DIR__ . '/../application/');
 
-var_dump('111');die();
-
 require __DIR__ . '/../thinkphp/start.php';
+
+var_dump($request->module());die();
