@@ -59,9 +59,8 @@ function grash_raffle_ticket(){
             $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
             if(empty($val)){
                 $ball = grash_double_curl($url . $tmpIssue . $suffix);
-                var_dump('1');
+                break;
                 if(empty($ball)){
-                    var_dump('2');
                     //不同年份，初始化期号和年份，继续获取,直到无法得到数据为止
                     if($particular != $curYear){
                         $particular += 1;
@@ -71,7 +70,6 @@ function grash_raffle_ticket(){
                         break;
                     }
                 }
-                var_dump('3');die();
 
                 $redBall = array($ball[0],$ball[1],$ball[2],$ball[3],$ball[4],$ball[5]);
                 $blueBall = $ball[6];
@@ -114,15 +112,17 @@ function create_raffle_format_issue($year, $issue = 0){
 function grash_double_curl($url){
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate'));
-    curl_setopt($ch, CURLOPT_ENCODING,'gzip,deflate');
+    //curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate'));
+    //curl_setopt($ch, CURLOPT_ENCODING,'gzip,deflate');
     //curl_setopt($ch, CURLOPT_FAILONERROR,true);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,5);  //尝试链接时间
-    curl_setopt($ch,CURLOPT_TIMEOUT,6); //链接超时时间
+    //curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,5);  //尝试链接时间
+    //curl_setopt($ch,CURLOPT_TIMEOUT,6); //链接超时时间
 
     $html = curl_exec($ch);
     curl_close($ch);
+
+    var_dump($html);die();
 
     if(!empty($html)){
         $ball = array();
