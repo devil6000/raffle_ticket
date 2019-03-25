@@ -17,6 +17,7 @@ class LoginController extends BaseController {
 
     protected function init() {
         // TODO: Implement init() method.
+        var_dump('111');die();
     }
 
     public function indexDo(){

@@ -92,8 +92,6 @@ class App
                 }
             }
 
-            var_dump($name);die();
-
             $request->filter($config['default_filter']);
 
             // 默认语言
