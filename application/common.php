@@ -113,10 +113,10 @@ function grash_double_curl($url){
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate'));
     curl_setopt($ch, CURLOPT_ENCODING,'gzip,deflate');
-    curl_setopt($ch, CURLOPT_FAILONERROR,true);
+    //curl_setopt($ch, CURLOPT_FAILONERROR,true);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,5);  //尝试链接时间
-    curl_setopt($ch,CURLOPT_TIMEOUT,6); //链接超时时间
+    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,10);  //尝试链接时间
+    //curl_setopt($ch,CURLOPT_TIMEOUT,6); //链接超时时间
 
     $html = curl_exec($ch);
     curl_close($ch);
