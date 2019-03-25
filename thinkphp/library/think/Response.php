@@ -121,6 +121,8 @@ class Response
             }
         }
 
+        var_dump($data);die();
+
         echo $data;
 
         if (function_exists('fastcgi_finish_request')) {

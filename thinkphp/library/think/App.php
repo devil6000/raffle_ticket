@@ -161,8 +161,6 @@ class App
         // 监听 app_end
         Hook::listen('app_end', $response);
 
-        var_dump($response);die();
-
         return $response;
     }
 
