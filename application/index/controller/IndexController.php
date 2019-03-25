@@ -27,7 +27,6 @@ class IndexController extends LoginBaseController {
 
     public function indexDo(){
         set_time_limit(0);
-        /*
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL, 'http://kaijiang.500.com/shtml/ssq/19029.shtml');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
@@ -35,8 +34,6 @@ class IndexController extends LoginBaseController {
         curl_setopt($ch,CURLOPT_HEADER, false);
         $html = curl_exec($ch);
         curl_close($ch);
-        */
-        $html = htmlspecialchars(file_get_contents('http://kaijiang.500.com/shtml/ssq/19029.shtml'));
         var_dump($html);die();
 
         $issue = $this->config['issue'] - 1;
