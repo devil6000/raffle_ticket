@@ -8,5 +8,5 @@
  */
 
 define('APP_PATH', __DIR__ . '/../application/');
-define('BIND_MODULE', 'manage');
+
 require __DIR__ . '/../thinkphp/start.php';
