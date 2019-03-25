@@ -28,7 +28,7 @@ class IndexController extends LoginBaseController {
     public function indexDo(){
         set_time_limit(0);
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL, 'http://kaijiang.500.com/shtml/ssq/19029.shtml');
+        curl_setopt($ch,CURLOPT_URL, 'http://www.baidu.com');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
         curl_setopt($ch,CURLOPT_IPRESOLVE,CURL_IPRESOLVE_V4);
         curl_setopt($ch,CURLOPT_HEADER, false);
