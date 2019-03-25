@@ -121,7 +121,7 @@ function grash_double_curl($url){
     $html = curl_exec($ch);
     curl_close($ch);
 
-    var_dump($html);die();
+    var_dump($url);die();
 
     if(!empty($html)){
         $ball = array();
