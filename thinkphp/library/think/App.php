@@ -111,6 +111,8 @@ class App
             // 获取应用调度信息
             $dispatch = self::$dispatch;
 
+            var_dump($dispatch);die();
+
             // 未设置调度信息则进行 URL 路由检测
             if (empty($dispatch)) {
                 $dispatch = self::routeCheck($request, $config);
@@ -160,8 +162,6 @@ class App
 
         // 监听 app_end
         Hook::listen('app_end', $response);
-
-        var_dump($request);die();
 
         return $response;
     }
