@@ -92,19 +92,13 @@ class App
                 }
             }
 
-            var_dump($name);
-
             $request->filter($config['default_filter']);
-
-            var_dump('11');
 
             // 默认语言
             Lang::range($config['default_lang']);
             // 开启多语言机制 检测当前语言
             $config['lang_switch_on'] && Lang::detect();
             $request->langset(Lang::range());
-
-            var_dump('222');
 
             // 加载系统语言包
             Lang::load([
@@ -116,8 +110,6 @@ class App
             Hook::listen('app_dispatch', self::$dispatch);
             // 获取应用调度信息
             $dispatch = self::$dispatch;
-
-            var_dump($dispatch);die();
 
             // 未设置调度信息则进行 URL 路由检测
             if (empty($dispatch)) {
@@ -168,6 +160,8 @@ class App
 
         // 监听 app_end
         Hook::listen('app_end', $response);
+
+        var_dump($response);die();
 
         return $response;
     }
