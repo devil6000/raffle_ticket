@@ -90,6 +90,8 @@ class Response
         // 监听response_send
         Hook::listen('response_send', $this);
 
+        var_dump('111');die();
+
         // 处理输出数据
         $data = $this->getContent();
 
@@ -120,8 +122,6 @@ class Response
                 }
             }
         }
-
-        var_dump($data);die();
 
         echo $data;
 
