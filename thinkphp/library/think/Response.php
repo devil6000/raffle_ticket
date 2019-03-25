@@ -93,14 +93,10 @@ class Response
         // 处理输出数据
         $data = $this->getContent();
 
-        var_dump($data);
-
         // Trace调试注入
         if (Env::get('app_trace', Config::get('app_trace'))) {
             Debug::inject($this, $data);
         }
-
-        var_dump('111');
 
         if (200 == $this->code) {
             $cache = Request::instance()->getCache();
@@ -112,7 +108,7 @@ class Response
             }
         }
 
-        var_dump('222');die();
+        var_dump($this->header);die();
 
         if (!headers_sent() && !empty($this->header)) {
             // 发送状态码
