@@ -112,7 +112,7 @@ class Response
             }
         }
 
-        var_dump('222');
+        var_dump('222');die();
 
         if (!headers_sent() && !empty($this->header)) {
             // 发送状态码
@@ -126,8 +126,6 @@ class Response
                 }
             }
         }
-
-        var_dump('333');die();
 
         echo $data;
 
