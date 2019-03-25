@@ -58,9 +58,10 @@ function grash_raffle_ticket(){
             $tmpIssue = create_raffle_format_issue($particular, $issue);
             $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
             if(empty($val)){
-                var_dump($url . $tmpIssue . $suffix);die();
                 $ball = grash_double_curl($url . $tmpIssue . $suffix);
+                var_dump('1');
                 if(empty($ball)){
+                    var_dump('2');
                     //不同年份，初始化期号和年份，继续获取,直到无法得到数据为止
                     if($particular != $curYear){
                         $particular += 1;
@@ -70,6 +71,7 @@ function grash_raffle_ticket(){
                         break;
                     }
                 }
+                var_dump('3');die();
 
                 $redBall = array($ball[0],$ball[1],$ball[2],$ball[3],$ball[4],$ball[5]);
                 $blueBall = $ball[6];
