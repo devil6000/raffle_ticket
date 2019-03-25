@@ -92,13 +92,19 @@ class App
                 }
             }
 
+            var_dump($name);
+
             $request->filter($config['default_filter']);
+
+            var_dump('11');
 
             // 默认语言
             Lang::range($config['default_lang']);
             // 开启多语言机制 检测当前语言
             $config['lang_switch_on'] && Lang::detect();
             $request->langset(Lang::range());
+
+            var_dump('222');
 
             // 加载系统语言包
             Lang::load([
