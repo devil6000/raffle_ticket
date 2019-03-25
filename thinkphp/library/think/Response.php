@@ -108,8 +108,6 @@ class Response
             }
         }
 
-        var_dump($this->header);die();
-
         if (!headers_sent() && !empty($this->header)) {
             // 发送状态码
             http_response_code($this->code);
