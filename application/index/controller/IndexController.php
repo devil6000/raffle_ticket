@@ -30,6 +30,7 @@ class IndexController extends LoginBaseController {
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL, 'http://kaijiang.500.com/shtml/ssq/19029.shtml');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch,CURLOPT_IPRESOLVE,CURL_IPRESOLVE_V4);
         $html = curl_exec($ch);
         curl_close($ch);
         var_dump($html);die();
