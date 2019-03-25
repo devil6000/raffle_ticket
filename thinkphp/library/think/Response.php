@@ -90,15 +90,17 @@ class Response
         // 监听response_send
         Hook::listen('response_send', $this);
 
-        var_dump('111');die();
-
         // 处理输出数据
         $data = $this->getContent();
+
+        var_dump($data);
 
         // Trace调试注入
         if (Env::get('app_trace', Config::get('app_trace'))) {
             Debug::inject($this, $data);
         }
+
+        var_dump('111');
 
         if (200 == $this->code) {
             $cache = Request::instance()->getCache();
@@ -109,6 +111,8 @@ class Response
                 Cache::tag($cache[2])->set($cache[0], [$data, $this->header], $cache[1]);
             }
         }
+
+        var_dump('222');
 
         if (!headers_sent() && !empty($this->header)) {
             // 发送状态码
@@ -122,6 +126,8 @@ class Response
                 }
             }
         }
+
+        var_dump('333');die();
 
         echo $data;
 
