@@ -16,6 +16,6 @@ class DoubleModel extends Model {
 
     public function getYearList(){
         $info = $this->order('id asc')->limit(1)->find();
-        return $info;
+        return $info->toArray();
     }
 }
