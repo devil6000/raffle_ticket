@@ -53,7 +53,6 @@ class CharController extends LoginBaseController {
         }
 
         $list = $this->model->getNumberList($condition);
-        var_dump($list);die();
         $this->assign('list', $list);
         return $this->fetch();
     }

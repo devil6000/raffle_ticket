@@ -28,7 +28,7 @@ class DoubleModel extends Model {
     }
 
     public function getNumberList($condition = array()){
-        $list = $this->where($condition)->order('id desc')->select();
+        $list = $this->where($condition)->order('id asc')->select();
         return $list->toArray();
     }
 }
