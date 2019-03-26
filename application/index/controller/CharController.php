@@ -54,6 +54,7 @@ class CharController extends LoginBaseController {
 
         $list = $this->model->getNumberList($condition);
         $this->assign('list', $list);
+        $this->view->engine->layout('layout/layout');
         return $this->fetch();
     }
 }
