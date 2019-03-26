@@ -25,4 +25,9 @@ class DoubleModel extends Model {
         }
         return $year_list;
     }
+
+    public function getNumberList($condition = array()){
+        $list = $this->where($condition)->order('id desc')->select();
+        return $list->toArray();
+    }
 }

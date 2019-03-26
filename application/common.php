@@ -164,3 +164,24 @@ function save_config($path,$params){
     }
     return false;
 }
+
+/**
+ * 获取双色球红色球，蓝色球
+ * @return array
+ */
+function get_double_ball(){
+    $ball = array();
+    $redBall = array();
+    $blueBall = array();
+    for($i = 1; $i <= 33; $i++){
+        $redBall[] = substr('00' . $i, -2);
+    }
+    for($i = 1; $i <= 16; $i++){
+        $blueBall[] = substr('00' . $i, -2);
+    }
+
+    $ball['red'] = $redBall;
+    $ball['blue'] = $blueBall;
+
+    return $ball;
+}
