@@ -13,6 +13,7 @@ use think\Model;
 
 class DoubleModel extends Model {
     protected $pk = 'id';
+    protected $resultSetType = 'collection';
 
     public function getYearList(){
         $info = $this->order('id asc')->limit(1)->find();
