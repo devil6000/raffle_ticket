@@ -15,7 +15,7 @@ class DoubleModel extends Model {
     protected $pk = 'id';
 
     public function getYearList(){
-        $info = $this->db->order('id asc')->limti(1)->find();
+        $info = $this->order('id asc')->limti(1)->find();
         return $info;
     }
 }
