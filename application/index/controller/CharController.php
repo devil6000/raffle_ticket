@@ -53,6 +53,12 @@ class CharController extends LoginBaseController {
         }
 
         $list = $this->model->getNumberList($condition);
+        if($list){
+            foreach ($list as $key => $item){
+                $redBall = unserialize($item['red_ball']);
+                $list[$key]['red_ball'] = $redBall;
+            }
+        }
         $this->assign('list', $list);
         $this->view->engine->layout('layout/layout');
         return $this->fetch();

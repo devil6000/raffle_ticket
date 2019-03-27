@@ -12,7 +12,7 @@
         <div class="card-body table-responsive">
             <table class="table table-sm table-bordered">
                 <thead>
-                <tr class="table-primary">
+                <tr>
                     <th style="width: 80px;">期号</th>
                     {volist name="ball_title.red" id="red"}
                     <th>{$red}</th>
@@ -22,6 +22,23 @@
                     {/volist}
                 </tr>
                 </thead>
+                <tbody>
+                {if count($list) > 0}
+                {volist name="list" id="row"}
+                    <td>{$row.issue}</td>
+                    {volist name="ball_title.red" id="red"}
+                    <td><span class="{if in_array($red, $row.red_ball)}text-danger{else}text-secondary{/if}">{$red}</span></td>
+                    {/volist}
+                    {volist name="ball_title.blue" id="blue"}
+                    <td><span class="{if $blue == $row.blue}text-primary{else}text-secondary{/if}">{$blue}</span></td>
+                    {/volist}
+                {/volist}
+                {else}
+                <tr>
+                    <td colspan="50" style="text-align: center">未找到数据</td>
+                </tr>
+                {/if}
+                </tbody>
             </table>
         </div>
     </div>
