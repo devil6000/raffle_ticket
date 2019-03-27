@@ -7,7 +7,7 @@
         <select class="form-control mb-2 mr-sm-2" id="inlineSelectDate" name="year">
             <option value="0">当前年份</option>
             {volist name="year_list" id="y"}
-            <option value="{$y}" {if $y == $yaer}selected{/if} >{$y}</option>
+            <option value="{$y}" {if $y == $year}selected{/if} >{$y}</option>
             {/volist}
         </select>
         <label class="sr-only" for="inlineSelectIssue">期号</label>
