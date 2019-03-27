@@ -52,6 +52,8 @@ class CharController extends LoginBaseController {
             }
         }
 
+        var_dump($condition);die();
+
         $list = $this->model->getNumberList($condition);
         if($list){
             foreach ($list as $key => $item){
@@ -60,6 +62,7 @@ class CharController extends LoginBaseController {
             }
         }
         $this->assign('year', 2000 + $year);
+        $this->assign('issue', $issue);
         $this->assign('list', $list);
         $this->view->engine->layout('layout/layout');
         return $this->fetch();
