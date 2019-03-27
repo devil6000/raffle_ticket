@@ -4,8 +4,11 @@
 <div class="container-fluid">
     <form method="get" class="form-inline">
         <label class="sr-only" for="inlineSelectDate">年份</label>
-        <select class="form-control mb-2 mr-sm-2" id="inlineSelectDate" name="date">
-            <option value="">请选择年份</option>
+        <select class="form-control mb-2 mr-sm-2" id="inlineSelectDate" name="year">
+            <option value="0">当前年份</option>
+            {volist name="year_list" id="y"}
+            <option value="{$y}" {if $y == $yaer}selected{/if} >{$y}</option>
+            {/volist}
         </select>
         <label class="sr-only" for="inlineSelectIssue">期号</label>
         <input type="text" id="inlineSelectIssue" name="issue" class="form-control mb-2 mr-sm-2" placeholder="期号，多期用'，'隔开，范围用'－'隔开" />

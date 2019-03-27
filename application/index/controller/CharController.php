@@ -59,6 +59,7 @@ class CharController extends LoginBaseController {
                 $list[$key]['red_ball'] = $redBall;
             }
         }
+        $this->assign('year', 2000 + $year);
         $this->assign('list', $list);
         $this->view->engine->layout('layout/layout');
         return $this->fetch();
