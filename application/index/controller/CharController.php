@@ -53,8 +53,6 @@ class CharController extends LoginBaseController {
             }
         }
 
-        var_dump($condition);die();
-
         $list = $this->model->getNumberList($condition);
         if($list){
             foreach ($list as $key => $item){
