@@ -30,7 +30,7 @@
                     <td><span class="{if in_array($red, $row.red_ball)}text-danger{else}text-secondary{/if}">{$red}</span></td>
                     {/volist}
                     {volist name="ball_title.blue" id="blue"}
-                    <td><span class="{if $blue == $row.blue}text-primary{else}text-secondary{/if}">{$blue}</span></td>
+                    <td><span class="{if $blue == $row.blue_ball}text-primary{else}text-secondary{/if}">{$blue}</span></td>
                     {/volist}
                 {/volist}
                 {else}
