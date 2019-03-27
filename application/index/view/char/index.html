@@ -9,8 +9,20 @@
         <button type="submit" class="btn btn-primary mb-2">搜索</button>
     </form>
     <div class="card">
-        <div class="card-body">
-
+        <div class="card-body table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th style="width: 80px;">期号</th>
+                    {volist name="ball_title.red" id="red"}
+                    <th>{$red}</th>
+                    {/volist}
+                    {volist name="ball_title.blue" id="blue"}
+                    <th>{$blue}</th>
+                    {/volist}
+                </tr>
+                </thead>
+            </table>
         </div>
     </div>
 </div>
