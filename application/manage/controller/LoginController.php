@@ -17,6 +17,7 @@ class LoginController extends BaseController {
 
     protected function init() {
         // TODO: Implement init() method.
+        $this->systemTitle = '系统登录';
     }
 
     public function indexDo(){
