@@ -39,8 +39,9 @@ class CharController extends LoginBaseController {
         }
 
         $condition['year'] = $year;
-        var_dump($issue);die();
+
         if(!empty($issue)){
+            var_dump($issue);die();
             if(strpos(',',$issue) === false && strpos('-',$issue) === false){
                 $condition['issue_no'] = $issue;
             }elseif (strpos(',', $issue) !== false){
