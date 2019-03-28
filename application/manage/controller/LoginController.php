@@ -56,7 +56,22 @@ class LoginController extends BaseController {
     }
 
     public function registerDo(){
-
+        if(request()->isPost()){
+            $username = input('post.username','');
+            $password = input('post.password', '');
+            $signKey = get_random(5);
+            $password = md5($password . $signKey);
+            $insert = array(
+                'username' => $username,
+                'password' => $password,
+                'jurisdiction' => -1,
+                'signkey' => $signKey
+            );
+            UserModel::create($insert);
+            $this->success('注册成功!', url('index'), 3);
+        }
+        $this->view->engine->layout(false);
+        return $this->fetch();
     }
 
     public function outLoginDo(){

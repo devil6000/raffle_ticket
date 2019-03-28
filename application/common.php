@@ -185,3 +185,12 @@ function get_double_ball(){
 
     return $ball;
 }
+
+/**
+ * 随机数
+ * @param $len
+ * @return bool|string
+ */
+function get_random($len){
+    return substr(md5(microtime(true)),0,$len);
+}
