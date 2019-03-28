@@ -41,15 +41,12 @@ class CharController extends LoginBaseController {
         $condition['year'] = $year;
 
         if(!empty($issue)){
-            if(strpos(',',$issue) === false && strpos('-',$issue) === false){
-                var_dump(strpos(',',$issue));
-                var_dump(strpos('-',$issue));
-                die();
+            if((strpos($issue, ',') === false) && (strpos($issue,'-') === false)){
                 $condition['issue_no'] = $issue;
-            }elseif (strpos(',', $issue) !== false){
+            }elseif (strpos($issue, ',') !== false){
                 //$tmpIssue = explode(',',$issue);
                 $condition['issue_no'] = ['in',[$issue]];
-            }elseif (strpos('-', $issue) !== false){
+            }elseif (strpos($issue,'-') !== false){
                 //$tmpIssue = explode('-', $issue);
                 $tmpIssue = str_replace('-',',', $issue);
                 $condition['issue_no'] = ['between',[$tmpIssue]];
