@@ -47,9 +47,9 @@ class CharController extends LoginBaseController {
                 //$tmpIssue = explode(',',$issue);
                 $condition['issue_no'] = ['in',[$issue]];
             }elseif (strpos($issue,'-') !== false){
-                //$tmpIssue = explode('-', $issue);
-                $tmpIssue = str_replace('-',',', $issue);
-                $condition['issue_no'] = ['between',[$tmpIssue]];
+                $tmpIssue = explode('-', $issue);
+                //$tmpIssue = str_replace('-',',', $issue);
+                $condition['issue_no'] = ['between',$tmpIssue];
             }
         }
 
