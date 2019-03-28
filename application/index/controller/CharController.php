@@ -44,8 +44,8 @@ class CharController extends LoginBaseController {
             if((strpos($issue, ',') === false) && (strpos($issue,'-') === false)){
                 $condition['issue_no'] = $issue;
             }elseif (strpos($issue, ',') !== false){
-                //$tmpIssue = explode(',',$issue);
-                $condition['issue_no'] = ['in',[$issue]];
+                $tmpIssue = explode(',',$issue);
+                $condition['issue_no'] = ['in',$tmpIssue];
             }elseif (strpos($issue,'-') !== false){
                 $tmpIssue = explode('-', $issue);
                 //$tmpIssue = str_replace('-',',', $issue);
