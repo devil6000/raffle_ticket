@@ -28,7 +28,6 @@ function grash_raffle_ticket(){
                 $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
                 if(empty($val)){
                     $ball = grash_double_curl($url . $tmpIssue . $suffix);
-                    var_dump($ball);die();
                     if(empty($ball)){
                         break;
                     }
@@ -60,7 +59,6 @@ function grash_raffle_ticket(){
             $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
             if(empty($val)){
                 $ball = grash_double_curl($url . $tmpIssue . $suffix);
-                break;
                 if(empty($ball)){
                     //不同年份，初始化期号和年份，继续获取,直到无法得到数据为止
                     if($particular != $curYear){
@@ -116,9 +114,9 @@ function grash_double_curl($url){
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,0); //对认证证书来源的检查
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11'); //模拟用户使用的浏览器
     //curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1); //使用自动跳转
-    curl_setopt($ch,CURLOPT_AUTOREFERER,1); //自动设置Referer
-    //curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate','X-FORWARDED-FOR:111.222.333.4', 'CLIENT-IP:111.222.333.4'));
-    //curl_setopt($ch, CURLOPT_ENCODING,'gzip,deflate');
+    //curl_setopt($ch,CURLOPT_AUTOREFERER,1); //自动设置Referer
+    curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate','X-FORWARDED-FOR:111.222.333.4', 'CLIENT-IP:111.222.333.4'));
+    curl_setopt($ch, CURLOPT_ENCODING,'gzip,deflate');
     curl_setopt($ch, CURLOPT_FAILONERROR,true);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
     curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,5);  //尝试链接时间
