@@ -114,7 +114,7 @@ function grash_double_curl($url){
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,0); //对认证证书来源的检查
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11'); //模拟用户使用的浏览器
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1); //使用自动跳转
+    //curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1); //使用自动跳转
     curl_setopt($ch,CURLOPT_AUTOREFERER,1); //自动设置Referer
     //curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate','X-FORWARDED-FOR:111.222.333.4', 'CLIENT-IP:111.222.333.4'));
     //curl_setopt($ch, CURLOPT_ENCODING,'gzip,deflate');
