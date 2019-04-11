@@ -112,6 +112,7 @@ function create_raffle_format_issue($year, $issue = 0){
 function grash_double_curl($url){
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11');
     curl_setopt($ch,CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip,deflate'));
     curl_setopt($ch, CURLOPT_ENCODING,'gzip,deflate');
     curl_setopt($ch, CURLOPT_FAILONERROR,true);
