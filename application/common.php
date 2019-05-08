@@ -32,6 +32,13 @@ function grash_raffle_ticket(){
                         break;
                     }
 
+                    //判断是否是数字
+                    foreach ($ball as $k => $item){
+                        if(intval($item) <= 0){
+                            break;
+                        }
+                    }
+
                     $redBall = array($ball[0],$ball[1],$ball[2],$ball[3],$ball[4],$ball[5]);
                     $blueBall = $ball[6];
 
@@ -66,6 +73,16 @@ function grash_raffle_ticket(){
                         $issue = 1;
                         continue;
                     }else{
+                        break;
+                    }
+                }else{
+                    //获取到空值退出
+                    break;
+                }
+
+                //判断是否是数字
+                foreach ($ball as $k => $item){
+                    if(intval($item) <= 0){
                         break;
                     }
                 }
