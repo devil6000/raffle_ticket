@@ -15,9 +15,11 @@ class UserModel extends Model {
     protected $autoWriteTimestamp = true;
     protected $updateTime = false;
     protected $pk = 'id';
-    protected $fk = 'jurisdiction';
-
+    //protected $fk = 'jurisdiction';
+    
+    /*
     public function jurisdiction(){
         return $this->belongsTo('JurisdictionModel');
     }
+    */
 }
