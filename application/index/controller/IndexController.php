@@ -36,6 +36,7 @@ class IndexController extends LoginBaseController {
         if($list){
             foreach ($list as $key => $value){
                 $value['red_ball'] = unserialize($value['red_ball']);
+                $value['AC'] = compute_ac($value['issue']);
                 $list[$key] = $value;
             }
         }

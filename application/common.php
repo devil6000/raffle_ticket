@@ -187,6 +187,19 @@ function save_config($path,$params){
 }
 
 /**
+ * 判断是否为错误信息
+ * @param $data
+ * @return bool
+ */
+function is_error($data){
+    if(empty($data) || is_array($data) || array_key_exists('errno', $data) || (array_key_exists('errno', $data) && $data['errno'] == 0)){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+/**
  * 获取双色球红色球，蓝色球
  * @return array
  */
@@ -214,4 +227,81 @@ function get_double_ball(){
  */
 function get_random($len){
     return substr(md5(microtime(true)),0,$len);
+}
+
+/**
+ * 获取AC值
+ * 一组号码中所有两个号码相减，然后对所得的差求绝对值，如果有相同的数字，则只保留一个，得到不同差值个数D(t)，然后，用个数值D(t)减去（r-1）（其中r为投注号码数），这个数值就是AC值
+ * @param $issue
+ * @param int $r
+ * @return int
+ */
+function compute_ac($issue,$r = 7){
+    $lottery = \app\model\DoubleModel::where('issue', $issue)->find();
+    $balls = explode(' ', $lottery['whole']);
+    if($r == 6){    unset($balls[6]);}
+    $val = array();
+    foreach ($balls as $k => $ball){
+        foreach ($balls as $k1 => $b1){
+            $v = abs($ball - $b1);
+            if($v != 0){
+                $val[] = $v;
+            }
+        }
+    }
+    $val = array_unique($val);  //去除重复的值
+    $dt = count($val);
+    return $dt - ($r - 1);
+}
+
+/**
+ * 号码散度：单注所有号码与当前号码之差（以结果的绝对值为准）的最小值中的最大的一个。
+ * @param $issue
+ * @return mixed
+ */
+function get_divergence($issue){
+    $lottery = \app\model\DoubleModel::where('issue', $issue)->find();
+    $rebBalls = unserialize($lottery['red_ball']);
+    $diff = array();
+    foreach ($rebBalls as $k => $b){
+        $min[$k] = 33;
+        foreach ($rebBalls as $k1 => $b1){
+            $v = abs($b - $b1);
+            if($v != 0){
+                $diff[$k][] = $v;
+                if($min[$k] > $v){
+                    $min[$k] = $v;
+                }
+            }
+        }
+    }
+
+    return max($min);
+}
+
+/**
+ * 号码偏度：单注所有号码与上期开奖号码之差（以结果的绝对值为准）的最小值中的最大的一个
+ * @param $currentIssue
+ * @param $PreviousIssue
+ * @return array|mixed
+ */
+function get_skewness($currentIssue, $PreviousIssue){
+    if(empty($PreviousIssue)){  return array('errno' => 1, 'message' => '没有上期期号');}
+    $cur = \app\model\DoubleModel::where('issue', $currentIssue)->find();
+    $pre = \app\model\DoubleModel::where('issue', $PreviousIssue)->find();
+    $curRedBalls = unserialize($cur['red_ball']);
+    $preRedBalls = unserialize($pre['red_ball']);
+    $diff = array();
+    foreach ($curRedBalls as $k => $curBall){
+        $min[$k] = 33;
+        foreach ($preRedBalls as $k1 => $preBall){
+            $v = abs($curBall - $preBall);
+            $diff[$k][] = $v;
+            if($min[$k] > $v){
+                $min[$k] = $v;
+            }
+        }
+    }
+
+    return max($min);
 }
