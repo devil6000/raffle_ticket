@@ -7,8 +7,10 @@
  * Time: 下午3:11
  */
 return [
-  'template'    => [
+    'template'    => [
       'layout_on'   => true,
       'layout_name' => 'layout/layout'
-  ]
+    ],
+    //开启多语言
+    'lang_switch_on' => 'true'
 ];
