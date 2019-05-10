@@ -33,8 +33,8 @@ function grash_raffle_ticket(){
                     }
 
                     //判断是否是数字
-                    foreach ($ball as $k => $item){
-                        if(intval($item) <= 0){
+                    for($i = 0; $i <= 6; $i++){
+                        if(intval($ball[$i]) <= 0){
                             break;
                         }
                     }
@@ -81,8 +81,8 @@ function grash_raffle_ticket(){
                 }
 
                 //判断是否是数字
-                foreach ($ball as $k => $item){
-                    if(intval($item) <= 0){
+                for($i = 0; $i <= 6; $i++){
+                    if(intval($ball[$i]) <= 0){
                         break;
                     }
                 }
@@ -305,3 +305,73 @@ function get_skewness($currentIssue, $PreviousIssue){
 
     return max($min);
 }
+
+/**
+ * 各个球出现的总次数
+ * @param $year
+ * @return array
+ */
+ function get_occurrence_count($year){
+    if(empty($year)){
+        $list = \app\model\DoubleModel::order('year asc, issue_no asc')->select();
+    }elseif(is_string($year)){
+        $list = \app\model\DoubleModel::where('year', $year)->order('issue_no asc')->select();
+    }elseif (is_array($year)){
+        $year = import(',', $year);
+        $list = \app\model\DoubleModel::where('year', array('in', $year))->order('year asc, issue_no asc')->select();
+    }
+    $redBalls = Lottery::$redBalls;
+    $blueBalls = Lottery::$blueBalls;
+    $return = array();
+    if(!empty($list)){
+        foreach ($list as $item){
+            $openRedBalls = unserialize($item['red_ball']);
+            //获取红球开出次数
+            foreach ($redBalls as $redBall){
+                $return[$item['year']]['red'][$redBall] += (in_array($redBall, $openRedBalls) ? 1 : 0);
+            }
+            //获取蓝球开出次数
+            foreach ($blueBalls as $blueBall){
+                $return[$item['year']]['blue'][$blueBall] += ($blueBall == $item['blue_ball'] ? 1 : 0);
+            }
+        }
+    }
+
+    return $return;
+ }
+
+/**
+ * 红球奇偶数
+ * @param array $data
+ * @return array'
+ */
+ function get_odd_and_even_rate($data = array()){
+     //判断是按期号查询还是年份查询
+     if(!empty($data) && array_key_exists('issue', $data) && (array_key_exists('issue', $data) && !empty($data['issue']))){
+         $lottery = \app\model\DoubleModel::where('issue', $data['issue'])->find();
+         $list = array($lottery);
+     }else{
+         if(empty($data) || empty($data['year'])){
+             $list = \app\model\DoubleModel::order('year asc, issue_no asc')->select();
+         }elseif (is_string($data['year'])){
+             $list = \app\model\DoubleModel::where('year', $data['year'])->order('issue_no asc')->select();
+         }elseif (is_array($data['year'])){
+             $year = import(',', $data['year']);
+         }
+     }
+
+     $return = array();
+     foreach ($list as $item){
+         $openRedBalls = unserialize($item['red_ball']);
+         foreach ($openRedBalls as $ball){
+             $odd = intval($ball) % 2 == 0 ? 0 : 1;
+             $even = intval($ball) % 2 == 0 ? 1 : 0;
+             $return[$item['year']]['odd'] += $odd;
+             $return[$item['year']]['even'] += $even;
+             $return[$item['year']]['issue'][$item['issue']]['odd'] += $odd;
+             $return[$item['year']]['issue'][$item['issue']]['even'] += $even;
+         }
+     }
+
+     return $return;
+ }

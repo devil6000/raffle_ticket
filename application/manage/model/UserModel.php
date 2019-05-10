@@ -16,7 +16,7 @@ class UserModel extends Model {
     protected $updateTime = false;
     protected $pk = 'id';
     //protected $fk = 'jurisdiction';
-    
+
     /*
     public function jurisdiction(){
         return $this->belongsTo('JurisdictionModel');

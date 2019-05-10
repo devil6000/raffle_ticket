@@ -47,7 +47,7 @@ class LoginController extends BaseController {
             Session::set('user',$user);
 
             $ret_url = input('ret_url','');
-            $ret_url = empty($ret_url) ? url('index') : urldecode($ret_url);
+            $ret_url = empty($ret_url) or (strpos('login', $ret_url) !== false) ? url('index') : urldecode($ret_url);
 
             $this->success('登录成功!', $ret_url,3);
         }
