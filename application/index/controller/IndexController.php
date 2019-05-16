@@ -32,7 +32,7 @@ class IndexController extends LoginBaseController {
         $item = $this->model->where('issue', $issue)->find();
         $item['red_ball'] = unserialize($item['red_ball']);
 
-        $lottery = new Lottery();
+        $lottery = new \Lottery();
 
         $list = $this->model->where('issue_no','in',[$this->config['issue'] - 1, $this->config['issue']])->order('id asc')->select();
         if($list){
