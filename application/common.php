@@ -77,6 +77,8 @@ function grash_raffle_ticket(){
                     }
                 }
 
+                var_dump($ball);die();
+
                 //判断是否是数字
                 for($i = 0; $i <= 6; $i++){
                     if(intval($ball[$i]) <= 0){
