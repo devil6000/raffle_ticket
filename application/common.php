@@ -64,6 +64,7 @@ function grash_raffle_ticket(){
         while (true){
             $tmpIssue = create_raffle_format_issue($particular, $issue);
             $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
+            var_dump($val);die();
             if(empty($val)){
                 $ball = grash_double_curl($url . $tmpIssue . $suffix);
                 if(empty($ball)){

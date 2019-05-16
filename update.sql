@@ -22,9 +22,19 @@ create table `raffle_user`(
 /* 公式表 */
 create table `raffle_formula`(
   `id` int(10) not null auto_increment,
+  `title` varchar(255) null,
+  `formula` varchar(255) not null,
+  `accuracy` float(10,2) null default 0,
   primary key(`id`)
 )engine=innodb default charset=utf8;
 
+/* 字段表 */
+create table `raffle_fields`(
+  `id` int(10) not null auto_increment,
+  `title` varchar(100) not null,
+  `sign` varchar(100) not null,
+  primary key(`id`)
+);
 
 /****************************************************************
 前台表

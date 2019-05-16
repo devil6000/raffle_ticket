@@ -23,5 +23,7 @@ if(!class_exists('Lottery')){
         ];
         //质数
         public static $primeMember = ['01','02','03','05','07','11','13','17','19','23','31'];
+
+
     }
 }

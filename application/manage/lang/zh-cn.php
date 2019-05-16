@@ -8,6 +8,8 @@
 return [
     //公共
     'home'                  => '首页',
+    'system_title'          => '系统',
+    'system_title_small'    => '彩票系统',
 
     //注册，登录
     'username'              => '用户名',
