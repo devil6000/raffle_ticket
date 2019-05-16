@@ -66,7 +66,6 @@ function grash_raffle_ticket(){
             $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
             if(empty($val)){
                 $ball = grash_double_curl($url . $tmpIssue . $suffix);
-                var_dump($ball);die();
                 if(empty($ball)){
                     //不同年份，初始化期号和年份，继续获取,直到无法得到数据为止
                     if($particular != $curYear){
@@ -76,9 +75,6 @@ function grash_raffle_ticket(){
                     }else{
                         break;
                     }
-                }else{
-                    //获取到空值退出
-                    break;
                 }
 
                 //判断是否是数字
