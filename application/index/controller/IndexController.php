@@ -32,11 +32,17 @@ class IndexController extends LoginBaseController {
         $item = $this->model->where('issue', $issue)->find();
         $item['red_ball'] = unserialize($item['red_ball']);
 
+        $lottery = new \Lottery();
+
         $list = $this->model->where('issue_no','in',[$this->config['issue'] - 1, $this->config['issue']])->order('id asc')->select();
         if($list){
             foreach ($list as $key => $value){
                 $value['red_ball'] = unserialize($value['red_ball']);
                 $value['AC'] = compute_ac($value['issue']);
+                //质数
+                $prime = $lottery->getPrimeTimes(array('issue' => $value['issue']));
+                $value['prime'] = $prime[$value['year']][$value['issue']]['rebball']['prime'];
+                $value['composite'] = $prime[$value['year']][$value['issue']]['rebball']['composite'];
                 $list[$key] = $value;
             }
         }

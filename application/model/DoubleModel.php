@@ -15,6 +15,26 @@ class DoubleModel extends Model {
     protected $pk = 'id';
     protected $resultSetType = 'collection';
 
+    //查询单条记录
+    protected function scopeIssue($query,$issue){
+        $query->where('issue', $issue);
+    }
+
+    //查询多条记录
+    protected function scopeIssueList($query, $data){
+        $query->where('issue', 'in', $data)->order('year asc,issue_no asc');
+    }
+
+    //查询所有记录
+    protected function scopeList($query){
+        $query->order('year asc, issue_no asc');
+    }
+
+    //查询年范围内的所有记录
+    protected function scopeYearList($query, $data){
+        $query->where('year','in',$data)->order('year asc,issue_no asc');
+    }
+
     public function getYearList(){
         $info = $this->order('id asc')->limit(1)->find();
         $info = $info->toArray();

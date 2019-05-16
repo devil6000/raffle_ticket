@@ -15,6 +15,7 @@
                 <tr>
                     <th>期号</th>
                     <th>号码</th>
+                    <th>质数/合数</th>
                     <th>AC值</th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
             <tr>
                 <td>{$row.issue}</td>
                 <td>{$row.whole}</td>
+                <td>{$row['prime']}/{$row['composite']}</td>
                 <td>{$row.AC}</td>
             </tr>
             {/volist}

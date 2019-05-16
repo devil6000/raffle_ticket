@@ -197,6 +197,33 @@ function is_error($data){
 }
 
 /**
+ * 获取列表
+ * @param array $data
+ * @return mixed
+ */
+function analysis_params($data = array()){
+    $model = \app\model\DoubleModel();
+    if(empty($data)){
+        $list = $model->list()->all();
+    }else{
+        if(array_key_exists('issue', $data) && !empty($data['issue'])){
+            if(is_array($data['issue'])){
+                $data['issue'] = implode(',', $data['issue']);
+            }
+            $list = $model->issueList($data['issue'])->all();
+        }
+        if(array_key_exists('year', $data) && !empty($data['year'])){
+            if(is_array($data['year'])){
+                $data['year'] = implode(',', $data['year']);
+            }
+            $list = $model->yearList($data['year']);
+        }
+    }
+
+    return $list;
+}
+
+/**
  * 获取双色球红色球，蓝色球
  * @return array
  */
