@@ -202,7 +202,7 @@ function is_error($data){
  * @return mixed
  */
 function analysis_params($data = array()){
-    $model = \app\model\DoubleModel();
+    $model = new \app\model\DoubleModel();
     if(empty($data)){
         $list = $model->list()->all();
     }else{
