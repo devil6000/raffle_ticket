@@ -64,9 +64,9 @@ function grash_raffle_ticket(){
         while (true){
             $tmpIssue = create_raffle_format_issue($particular, $issue);
             $val = \app\model\DoubleModel::where('issue', $tmpIssue)->value('id');
-            var_dump($tmpIssue);die();
             if(empty($val)){
                 $ball = grash_double_curl($url . $tmpIssue . $suffix);
+                var_dump($ball);die();
                 if(empty($ball)){
                     //不同年份，初始化期号和年份，继续获取,直到无法得到数据为止
                     if($particular != $curYear){
