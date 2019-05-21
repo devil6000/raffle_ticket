@@ -38,16 +38,18 @@ if(!class_exists('Lottery')){
                         'blueball' => array(
                             'prime' => 0,
                             'composite' => 0
+                        )
+                    );
+                }
+                if(!isset($result[$item['year']][$item['issue']])){
+                    $result[$item['year']][$item['issue']] = array(
+                        'redball' => array(
+                            'prime' => 0,
+                            'composite' => 0
                         ),
-                        $item['issue'] => array(
-                            'redball' => array(
-                                'prime' => 0,
-                                'composite' => 0
-                            ),
-                            'blueball' => array(
-                                'prime' => 0,
-                                'composite' => 0
-                            )
+                        'blueball' => array(
+                            'prime' => 0,
+                            'composite' => 0
                         )
                     );
                 }
