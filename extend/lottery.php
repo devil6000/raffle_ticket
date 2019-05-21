@@ -27,7 +27,7 @@ if(!class_exists('Lottery')){
         //获取质数, 合数
         public static function getPrimeTimes($data = array()){
             $list = analysis_params($data);
-            $result = array();
+            $result = [];
             foreach ($list as $item){
                 $redBalls = unserialize($item['red_ball']);
                 $blueBall = $item['blue_ball'];
