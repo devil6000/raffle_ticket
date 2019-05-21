@@ -9,9 +9,15 @@
 namespace app\manage\base;
 
 
+use app\manage\model\UserModel;
+use think\Session;
+
 class LoginBaseController extends BaseController {
 
     protected function init() {
-
+        //获取会员信息
+        $model = new UserModel();
+        $user = $model->idByItem(Session::get('uid','login'))->find();
+        $this->assign('user', $user);
     }
 }

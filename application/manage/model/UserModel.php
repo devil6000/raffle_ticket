@@ -22,4 +22,9 @@ class UserModel extends Model {
         return $this->belongsTo('JurisdictionModel');
     }
     */
+
+    //通过ID获取会员信息
+    protected function scopeIdByItem($query,$id){
+        $query->where('id',$id);
+    }
 }
