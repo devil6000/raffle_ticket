@@ -48,7 +48,7 @@ class LoginController extends BaseController {
 
             $ret_url = input('ret_url','');
             $ret_url = empty($ret_url) or (strpos('login', $ret_url) !== false) ? url('index') : urldecode($ret_url);
-
+            var_dump($ret_url);die();
             $this->success('登录成功!', $ret_url,3);
         }
         $this->view->engine->layout(false);
