@@ -29,6 +29,7 @@ if(!class_exists('Lottery')){
             $list = analysis_params($data);
             $result = array();
             foreach ($list as $item){
+                var_dump($item);die();
                 $redBalls = unserialize($item['red_ball']);
                 $blueBall = $item['blue_ball'];
                 foreach ($redBalls as $ball){
