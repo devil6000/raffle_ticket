@@ -25,6 +25,7 @@ class FormulaController extends LoginBaseController {
             $conditions = array('title', array('like',"%{$keyWord}%"));
         }
         $list = (new FormulaModel())->getList($conditions);
+        var_dump($list);die();
         $page = $list->render();
         $this->assign('list', $list);
         $this->assign('keyWord', $keyWord);

@@ -10,6 +10,10 @@ return [
     'home'                  => '首页',
     'system_title'          => '系统',
     'system_title_small'    => '彩票系统',
+    'add'                   => '添加',
+    'edit'                  => '编辑',
+    'delete'                => '删除',
+    'operation'             => '操作',
 
     //注册，登录
     'username'              => '用户名',
@@ -26,4 +30,10 @@ return [
     'you_already_have_a_membership' => '您已经有了会员帐号?',
     'i_read_and_agree_to_the' => '我阅读并同意',
     'terms_of_usage'        => '条款',
+
+    //公式
+    'formula_name'          => '公式',
+    'formula_title'         => '标题',
+    'formula'               => '公式',
+    'formula_accuracy'      => '整确率'
 ];
