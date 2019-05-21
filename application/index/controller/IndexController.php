@@ -29,7 +29,7 @@ class IndexController extends LoginBaseController {
         $issue = $this->config['issue'] - 1;
         $year = $this->config['particular_year'];
         $issue = create_raffle_format_issue($year, $issue);
-        $item = $this->model->where('issue', $issue)->find();
+        $item = $this->model->issue($issue)->get();
         $item['red_ball'] = unserialize($item['red_ball']);
 
         $lottery = new \Lottery();

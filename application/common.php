@@ -29,7 +29,7 @@ function grash_raffle_ticket(){
                 if(empty($val)){
                     $ball = grash_double_curl($url . $tmpIssue . $suffix);
                     if(empty($ball)){
-                        break;
+                        return false;
                     }
 
                     //判断是否是数字
@@ -74,7 +74,7 @@ function grash_raffle_ticket(){
                         $issue = 1;
                         continue;
                     }else{
-                        break;
+                        return false;
                     }
                 }
 
