@@ -20,6 +20,6 @@ class IndexController extends LoginBaseController {
     }
 
     public function indexDo(){
-        
+        return $this->fetch();
     }
 }
