@@ -29,9 +29,9 @@ if(!class_exists('Lottery')){
             $list = analysis_params($data);
             $result = array();
             foreach ($list as $item){
+                var_dump($item['year']);die();
                 $redBalls = unserialize($item['red_ball']);
                 var_dump($redBalls);die();
-                $blueBall = $item['blue_ball'];
                 foreach ($redBalls as $ball){
                     if(in_array($ball, Lottery::$primeMember)){
                         $result[$item['year']]['redball']['prime'] += 1;
