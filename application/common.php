@@ -35,7 +35,8 @@ function grash_raffle_ticket(){
                     //判断是否是数字
                     for($i = 0; $i <= 6; $i++){
                         if(intval($ball[$i]) <= 0){
-                            return false;
+                            ++$issue;
+                            continue 2;
                         }
                     }
 
@@ -80,7 +81,8 @@ function grash_raffle_ticket(){
                 //判断是否是数字
                 for($i = 0; $i <= 6; $i++){
                     if(intval($ball[$i]) <= 0){
-                        return false;
+                        ++$issue;
+                        continue 2;
                     }
                 }
 
