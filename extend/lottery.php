@@ -30,7 +30,26 @@ if(!class_exists('Lottery')){
             $result = array();
             foreach ($list as $item){
                 if(!isset($result[$item['year']])){
-                    $result[$item['year']] = array();
+                    $result[$item['year']] = array(
+                        'redball' => array(
+                            'prime' => 0,
+                            'composite' => 0
+                        ),
+                        'blueball' => array(
+                            'prime' => 0,
+                            'composite' => 0
+                        ),
+                        $item['issue'] => array(
+                            'redball' => array(
+                                'prime' => 0,
+                                'composite' => 0
+                            ),
+                            'blueball' => array(
+                                'prime' => 0,
+                                'composite' => 0
+                            )
+                        )
+                    );
                 }
                 $redBalls = unserialize($item['red_ball']);
                 $blueBall = $item['blue_ball'];
