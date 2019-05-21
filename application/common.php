@@ -45,7 +45,7 @@ function grash_raffle_ticket(){
 
                     $insertData = [
                         'issue'     => $tmpIssue,
-                        'year'      => $particular,
+                        'year'      => (2000 +$particular),
                         'issue_no'  => $issue,
                         'red_ball'  => serialize($redBall),
                         'blue_ball' => $blueBall,
@@ -79,10 +79,12 @@ function grash_raffle_ticket(){
                 }
 
                 //判断是否是数字
-                for($i = 0; $i <= 6; $i++){
-                    if(intval($ball[$i]) <= 0){
-                        ++$issue;
-                        continue 2;
+                if($tmpIssue != '17001'){
+                    for($i = 0; $i <= 6; $i++){
+                        if(intval($ball[$i]) <= 0){
+                            ++$issue;
+                            continue 2;
+                        }
                     }
                 }
 
@@ -91,7 +93,7 @@ function grash_raffle_ticket(){
 
                 $insertData = [
                     'issue'     => $tmpIssue,
-                    'year'      => $particular,
+                    'year'      => (2000 + $particular),
                     'issue_no'  => $issue,
                     'red_ball'  => serialize($redBall),
                     'blue_ball' => $blueBall,
