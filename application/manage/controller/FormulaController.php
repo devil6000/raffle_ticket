@@ -20,6 +20,7 @@ class FormulaController extends LoginBaseController {
 
     public function indexDo(){
         $keyWord = input('keyWord','');
+        $conditions = array();
         if(!empty($keyWord)){
             $conditions = array('title', array('like',"%{$keyWord}%"));
         }
