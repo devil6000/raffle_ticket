@@ -25,6 +25,10 @@ class DoubleModel extends Model {
         $query->where('issue', 'in', $data)->order('year asc,issue_no asc');
     }
 
+    protected function scopeIssueNoList($query, $data){
+        $query->where('issue_no', 'in', $data)->order('year asc,issue_no asc');
+    }
+
     //查询所有记录
     protected function scopeList($query){
         $query->order('year asc, issue_no asc');

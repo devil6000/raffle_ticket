@@ -29,12 +29,12 @@ class IndexController extends LoginBaseController {
         $issue = $this->config['issue'] - 1;
         $year = $this->config['particular_year'];
         $issue = create_raffle_format_issue($year, $issue);
-        $item = $this->model->issue($issue)->get(1);
+        $item = $this->model->issue($issue)->find();
         $item['red_ball'] = unserialize($item['red_ball']);
 
         $lottery = new \Lottery();
 
-        $list = $this->model->where('issue_no','in',[$this->config['issue'] - 1, $this->config['issue']])->order('id asc')->select();
+        $list = $this->model->scopeIssueNoList([$this->config['issue'] - 1, $this->config['issue']])->select();
         if($list){
             foreach ($list as $key => $value){
                 $value['red_ball'] = unserialize($value['red_ball']);
