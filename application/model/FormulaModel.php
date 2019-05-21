@@ -13,11 +13,11 @@ use think\Model;
 
 class FormulaModel extends Model {
     protected $pk = 'id';
-    protected $resultSetType = 'collection';
+    //protected $resultSetType = 'collection';
 
     public function getList($conditions = array()){
         $list = $this->where($conditions)->paginate();
-        return $list->toArray();
+        return $list;
     }
 
     public function getFormula($id){
