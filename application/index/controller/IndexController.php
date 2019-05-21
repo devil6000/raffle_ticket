@@ -34,7 +34,7 @@ class IndexController extends LoginBaseController {
 
         $lottery = new \Lottery();
 
-        $list = $this->model->scopeIssueNoList([$this->config['issue'] - 1, $this->config['issue']])->select();
+        $list = $this->model->issueNoList([$this->config['issue'] - 1, $this->config['issue']])->select();
         if($list){
             foreach ($list as $key => $value){
                 $value['red_ball'] = unserialize($value['red_ball']);
