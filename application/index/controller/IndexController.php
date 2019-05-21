@@ -41,8 +41,8 @@ class IndexController extends LoginBaseController {
                 $value['AC'] = compute_ac($value['issue']);
                 //质数
                 $prime = $lottery->getPrimeTimes(array('issue' => $value['issue']));
-                $value['prime'] = $prime[$value['year']][$value['issue']]['rebball']['prime'];
-                $value['composite'] = $prime[$value['year']][$value['issue']]['rebball']['composite'];
+                $value['prime'] = $prime[$value['year']][$value['issue']]['redball']['prime'];
+                $value['composite'] = $prime[$value['year']][$value['issue']]['redball']['composite'];
                 $list[$key] = $value;
             }
         }
