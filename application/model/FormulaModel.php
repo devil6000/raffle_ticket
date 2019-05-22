@@ -21,8 +21,7 @@ class FormulaModel extends Model {
     }
 
     public function getFormula($id){
-        $item = $this->fetchSql(true)->where(array('id', $id))->find();
-        var_dump($item);die();
+        $item = $this->where('id',$id)->find();
         return $item;
     }
 
