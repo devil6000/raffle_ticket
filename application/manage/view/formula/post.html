@@ -59,6 +59,7 @@
 <script type="text/javascript" src="__STATIC__/assets/plugins/jquery-steps/jquery.steps.js"></script>
 <script type="text/javascript">
     $('[type=button]').on('click', function () {
-        $('#formula').append($(this).text());
+        var txt = $('#formula').text() + $(this).text();
+        $('#formula').text(txt);
     })
 </script>
