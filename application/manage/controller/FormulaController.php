@@ -70,6 +70,6 @@ class FormulaController extends LoginBaseController {
         $item = $model->getFormula($id);
         $this->assign('item', $item);
         $this->assign('id', $id);
-        return $this->fetch('add');
+        return $this->fetch();
     }
 }
