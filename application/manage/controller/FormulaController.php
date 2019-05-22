@@ -33,14 +33,15 @@ class FormulaController extends LoginBaseController {
     }
 
     public function addDo(){
-        $this->post();
+        //$this->post();
+        return $this->fetch('add');
     }
 
     public function editDo(){
         $this->post();
     }
 
-    public function post(){
+    protected function post(){
         $id = input('id',0);
         $model = new FormulaModel();
         if(request()->isPost()){
