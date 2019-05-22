@@ -37,6 +37,8 @@ return [
     'formula_title'         => '标题',
     'formula'               => '公式',
     'formula_accuracy'      => '整确率',
+    'formula_form'          => '公式表单',
+    'formula_fields_list'   => '字段列表',
 
     'enter_formula_title'   => '请输入公式名称',
     'enter_formula_content' => '请输入公式'
