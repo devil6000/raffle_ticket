@@ -63,17 +63,18 @@
                         <tbody>
                         {volist name="list" id="row"}
                             <tr>
-                                <td class="footable-first-visible" style="display: table-cell;">
+                                <td>
                                     <div class="checkbox">
-                                        <input id="{$row.id}" type="checkbox" value="{$row.id}" />
-                                        <label for="{$row.id}"> </label>
+                                        <input id="delete_{$row.id}" type="checkbox" value="{$row.id}" />
+                                        <label for="delete_{$row.id}"> </label>
                                     </div>
                                 </td>
                                 <td>{$row.title}</td>
                                 <td>{$row.formula}</td>
                                 <td>{$row.accuracy}</td>
                                 <td>
-
+                                    <button class="btn btn-icon btn-neutral btn-icon-mini"><i class="zmdi zmdi-edit"></i></button>
+                                    <button class="btn btn-icon btn-neutral btn-icon-mini"><i class="zmdi zmdi-delete"></i></button>
                                 </td>
                             </tr>
                         {/volist}
