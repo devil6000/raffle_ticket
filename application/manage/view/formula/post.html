@@ -1,0 +1,43 @@
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-7 col-md-6 col-sm-12">
+            <h2>Form Validation
+                <small>Taken from <a href="https://jqueryvalidation.org/" target="_blank">jqueryvalidation.org</a></small>
+            </h2>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12">
+            <ul class="breadcrumb float-md-right">
+                <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Oreo</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
+                <li class="breadcrumb-item active">Form Validation</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="body">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-7">
+                            <form id="form_validation" method="POST">
+                                <div class="form-group form-float">
+                                    <input type="text" class="form-control" placeholder="{$Think.lang.enter_formula_title}" name="title" required>
+                                </div>
+                                <div class="form-group form-float">
+                                    <textarea name="formula" cols="30" rows="5" placeholder="{$Think.lang.enter_formula_content}" class="form-control no-resize" required></textarea>
+                                </div>
+                                <button class="btn btn-raised btn-primary btn-round waves-effect" type="submit">{$Think.lang.submit}</button>
+                            </form>
+                        </div>
+                        <div class="col-lg-4 col-md-5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__STATIC__/assets/plugins/jquery-validation/jquery.validate.js"></script> <!-- Jquery Validation Plugin Css -->
+<script src="__STATIC__/assets/plugins/jquery-steps/jquery.steps.js"></script> <!-- JQuery Steps Plugin Js -->

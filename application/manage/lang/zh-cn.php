@@ -14,6 +14,7 @@ return [
     'edit'                  => '编辑',
     'delete'                => '删除',
     'operation'             => '操作',
+    'submit'                => '提交',
 
     //注册，登录
     'username'              => '用户名',
@@ -35,5 +36,8 @@ return [
     'formula_name'          => '公式',
     'formula_title'         => '标题',
     'formula'               => '公式',
-    'formula_accuracy'      => '整确率'
+    'formula_accuracy'      => '整确率',
+
+    'enter_formula_title'   => '请输入公式名称',
+    'enter_formula_content' => '请输入公式'
 ];

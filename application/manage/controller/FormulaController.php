@@ -47,7 +47,7 @@ class FormulaController extends LoginBaseController {
             $title = input('post.title', '');
             $formula = input('post.formula','');
             if(empty($formula)){
-                $this->error('公式不能为空!',url('formula/index'), 3);
+                $this->error('公式不能为空!',url('manage/formula/index'), 3);
             }
 
             $data = array(
@@ -62,10 +62,10 @@ class FormulaController extends LoginBaseController {
             }
 
             if(empty($result)){
-                $this->error('编辑公式失败!', url('formula/index'), 3);
+                $this->error('编辑公式失败!', url('manage/formula/index'), 3);
             }
 
-            $this->success('编辑公式成功!', url('formula/index'),3);
+            $this->success('编辑公式成功!', url('manage/formula/index'),3);
         }
         $item = $model->getFormula($id);
         $this->assign('item', $item);
