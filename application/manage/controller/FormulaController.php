@@ -34,11 +34,12 @@ class FormulaController extends LoginBaseController {
 
     public function addDo(){
         $this->post();
-        //return $this->fetch('post');
+        return $this->fetch('post');
     }
 
     public function editDo(){
         $this->post();
+        return $this->fetch('post');
     }
 
     protected function post(){
@@ -71,6 +72,5 @@ class FormulaController extends LoginBaseController {
         $item = $model->getFormula($id);
         $this->assign('item', $item);
         $this->assign('id', $id);
-        return $this->fetch('post');
     }
 }
