@@ -40,7 +40,7 @@ class FormulaController extends LoginBaseController {
         $this->post();
     }
 
-    public function post(){
+    protected function post(){
         $id = input('id',0);
         $model = new FormulaModel();
         if(request()->isPost()){
