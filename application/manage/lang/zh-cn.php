@@ -15,6 +15,10 @@ return [
     'delete'                => '删除',
     'operation'             => '操作',
     'submit'                => '提交',
+    'all'                   => '全部',
+    'more'                  => '更多',
+    'all_checked'           => '全选',
+    'search'                => '搜索',
 
     //注册，登录
     'username'              => '用户名',
