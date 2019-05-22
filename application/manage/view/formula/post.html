@@ -35,19 +35,22 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-5 col-sm-6">
+            {volist name="list" id="fields"}
             <div class="card">
                 <div class="header">
-                    <h2><strong>{$Think.lang.formula_fields_list}</strong></h2>
+                    <h2><strong>{$Think.lang.formula_fields_list}</strong> {$fields.title}</h2>
                 </div>
                 <div class="body">
-
+                    <div class="row clearfix jsdemo-notification-button">
+                        {volist name="fields.items" id="field"}
+                        <div class="col-sm-12 col-md-4 col-lg-3">
+                            <button type="button" class="btn btn-raised m-b-10 btn-danger btn-block waves-effect" data-placement-from="bottom" data-animate-enter="" data-animate-exit="" data-color-name="bg-black">{$field}</button>
+                        </div>
+                        {/volist}
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="body">
-
-                </div>
-            </div>
+            {/volist}
         </div>
     </div>
 </div>
